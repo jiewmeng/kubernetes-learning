@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-node
+spec:
+  # Select all pods with tagged app=kubernetes-node
+  selector:
+    app: kubernetes-node
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+# Name and label deployment
+metadata:
+  name: kubernetes-node
+  labels:
+    app: kubernetes-node
+spec:
+  replicas: 1
+  # Defines which pods are included in deployment
+  selector:
+    matchLabels:
+      app: kubernetes-node
+  template:
+    # Pod meta data
+    metadata:
+      labels:
+        app: kubernetes-node
+    # Specs for pod
+    spec:
+      containers:
+        - name: kubernetes-node
+          image: jiewmeng/kubernetes-node:0.0.4
+          ports:
+            - containerPort: 8080
